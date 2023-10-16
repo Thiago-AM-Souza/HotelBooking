@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Domain.Entities
         public string Name { get; set; }
         public int Level { get; set;}
         public bool InMaintenance { get; set; }
+        public Price Price { get; set; }
         public bool IsAvaliable
         {
             get

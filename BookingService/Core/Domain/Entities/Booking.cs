@@ -20,6 +20,8 @@ namespace Domain.Entities
         public DateTime End { get; set; }
         private Status Status { get; set; }
         public Status CurrentStatus { get { return this.Status; } }
+        public Guest Guest { get; set; }
+        public Room Room { get; set; }
 
         public void ChangeState(Action action)
         {
