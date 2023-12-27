@@ -121,6 +121,55 @@ namespace ApplicationTests
             Assert.That("Missing required information.".Equals(res.Message));
         }
 
+        [Test]
+        public async Task Should_Return_GuestNotFound_When_GuestDoestnExists()
+        {
+            var fakeRepo = new Mock<IGuestRepository>();
+
+            var fakeGuest = new Guest
+            {
+                Id = 333,
+                Name = "test",
+            };
+
+            fakeRepo.Setup(x => x.Get(333)).Returns(Task.FromResult<Guest?>(null));
+
+            guestMananger = new GuestManager(fakeRepo.Object);
+
+            var res = await guestMananger.GetGuest(333);
+
+            Assert.IsNotNull(res);
+            Assert.False(res.Success);
+            Assert.That(ErrorCodes.GUEST_NOT_FOUND.Equals(res.ErrorCode));
+            Assert.That("No guest record was found with the given id".Equals(res.Message));
+        }
+
+        [Test]
+        public async Task Should_Return_Guest_Success()
+        {
+            var fakeRepo = new Mock<IGuestRepository>();
+
+            var fakeGuest = new Guest
+            {
+                Id = 333,
+                Name = "test",
+                DocumentId = new Domain.ValueObjects.PersonId
+                {
+                    DocumentType = Domain.Enums.DocumentType.DriveLicence,
+                    IdNumber = "123",
+                }
+            };
+
+            fakeRepo.Setup(x => x.Get(333)).Returns(Task.FromResult((Guest?)fakeGuest));
+
+            guestMananger = new GuestManager(fakeRepo.Object);
+
+            var res = await guestMananger.GetGuest(333);
+
+            Assert.IsNotNull(res);
+            Assert.True(res.Success);
+            Assert.That(fakeGuest.Id.Equals(res.Data.Id));
+        }
         // IMPLEMENTAR TESTCASE DO EMAIL DEPOIS
     }
 }
