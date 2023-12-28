@@ -1,6 +1,5 @@
-using Domain.Entities;
-using Domain.Enums;
-using Action = Domain.Enums.Action;
+using Domain.Booking.Enums;
+using Action = Domain.Booking.Enums.Action;
 
 namespace DomainTests.Bookings
 {
@@ -14,57 +13,57 @@ namespace DomainTests.Bookings
         [Test]
         public void ShouldAlwaysStartWithCreatedStatus()
         {
-            var booking = new Booking();
+            var booking = new Domain.Booking.Entities.Booking();
 
-            Assert.AreEqual(booking.CurrentStatus, Status.Created);
+            Assert.That(Status.Created.Equals(booking.CurrentStatus));
         }
 
         [Test]
         public void ShouldSetStatusToPaidWhenPayingForABookingWithCreatedStatus()
         {
-            var booking = new Booking();
+            var booking = new Domain.Booking.Entities.Booking();
             booking.ChangeState(Action.Pay);
 
-            Assert.AreEqual(booking.CurrentStatus, Status.Paid);
+            Assert.That(Status.Paid.Equals(booking.CurrentStatus));
         }
 
         [Test]
         public void ShouldSetStatusToCanceledWhenCancelABookingWithCreatedStatus()
         {
-            var booking = new Booking();
+            var booking = new Domain.Booking.Entities.Booking();
             booking.ChangeState(Action.Cancel);
 
-            Assert.AreEqual(booking.CurrentStatus, Status.Canceled);
+            Assert.That(Status.Canceled.Equals(booking.CurrentStatus));
         }
 
         [Test]
         public void ShouldSetStatusToFinishedWhenPayingForABookingWithPaidBooking()
         {
-            var booking = new Booking();
+            var booking = new Domain.Booking.Entities.Booking();
             booking.ChangeState(Action.Pay);
             booking.ChangeState(Action.Finish);
 
-            Assert.AreEqual(booking.CurrentStatus, Status.Finished);
+            Assert.That(Status.Finished.Equals(booking.CurrentStatus));
         }
 
         [Test]
         public void ShouldSetStatusToRefoundedWhenPayingForABookingWithPaidBooking()
         {
-            var booking = new Booking();
+            var booking = new Domain.Booking.Entities.Booking();
             booking.ChangeState(Action.Pay);
             booking.ChangeState(Action.Refund);
 
-            Assert.AreEqual(booking.CurrentStatus, Status.Refouded);
+            Assert.That(Status.Refouded.Equals(booking.CurrentStatus));
         }
 
         [Test]
         public void ShouldSetStatusToCreatedWhenACanceledBooking()
         {
-            var booking = new Booking();
+            var booking = new Domain.Booking.Entities.Booking();
             booking.ChangeState(Action.Cancel);
             booking.ChangeState(Action.Reopen);
 
-            Assert.AreEqual(booking.CurrentStatus, Status.Created);
+            Assert.That(Status.Created.Equals(booking.CurrentStatus));
         }
     }
 }

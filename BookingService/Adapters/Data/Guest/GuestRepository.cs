@@ -1,6 +1,5 @@
-﻿using Domain.Ports;
+﻿using Domain.Guest.Ports;
 using Microsoft.EntityFrameworkCore;
-using Entities = Domain.Entities;
 
 namespace Data.Guest
 {
@@ -13,7 +12,7 @@ namespace Data.Guest
             _hotelDbContext = hotelDbContext;
         }
 
-        public async Task<int> Create(Entities.Guest guest)
+        public async Task<int> Create(Domain.Guest.Entities.Guest guest)
         {
             _hotelDbContext.Guests.Add(guest);
             await _hotelDbContext.SaveChangesAsync();
@@ -21,7 +20,7 @@ namespace Data.Guest
             return guest.Id;
         }
 
-        public Task<Entities.Guest?> Get(int id)
+        public Task<Domain.Guest.Entities.Guest?> Get(int id)
         {
             return _hotelDbContext.Guests.Where(g => g.Id == id).FirstOrDefaultAsync();
         }

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Enums
+namespace Domain.Guest.Exceptions
 {
-    public enum AcceptedCurrencies
+    public class MissingRequiredInformationException : Exception
     {
-        Dolar = 0,
-        Euro = 1,
-        BitCoin = 2,
+
     }
 }

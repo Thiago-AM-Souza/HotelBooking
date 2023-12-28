@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DomainExceptions
+namespace Domain.Guest.Exceptions
 {
     public class InvalidPersonalDocumentIdException : Exception
     {

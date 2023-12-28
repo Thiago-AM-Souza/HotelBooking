@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DomainExceptions
+namespace Domain.Guest.Enums
 {
-    public class MissingRequiredInformationException : Exception
+    public enum DocumentType
     {
-
+        Passport = 1,
+        DriveLicence = 2,
     }
 }

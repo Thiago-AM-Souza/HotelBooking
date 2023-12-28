@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DomainExceptions
+namespace Domain.Booking.Enums
 {
-    public class InvalidEmailException : Exception
+    public enum AcceptedCurrencies
     {
-
+        Dolar = 0,
+        Euro = 1,
+        BitCoin = 2,
     }
 }

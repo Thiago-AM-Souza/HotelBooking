@@ -3,8 +3,9 @@ using Application.Guest.DTO;
 using Application.Guest.Ports;
 using Application.Guest.Requests;
 using Application.Guest.Responses;
-using Domain.Entities;
-using Domain.Ports;
+using Domain.Guest.Entities;
+using Domain.Guest.Enums;
+using Domain.Guest.Ports;
 using Moq;
 
 namespace ApplicationTests
@@ -153,9 +154,9 @@ namespace ApplicationTests
             {
                 Id = 333,
                 Name = "test",
-                DocumentId = new Domain.ValueObjects.PersonId
+                DocumentId = new Domain.Guest.ValueObjects.PersonId
                 {
-                    DocumentType = Domain.Enums.DocumentType.DriveLicence,
+                    DocumentType = DocumentType.DriveLicence,
                     IdNumber = "123",
                 }
             };
