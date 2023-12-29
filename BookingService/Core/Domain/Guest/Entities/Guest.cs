@@ -46,5 +46,11 @@ namespace Domain.Guest.Entities
 
             }
         }
+
+        public bool IsValid()
+        {
+            ValidateState();
+            return true;
+        }
     }
 }

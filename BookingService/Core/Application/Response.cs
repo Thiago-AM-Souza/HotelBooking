@@ -22,6 +22,13 @@ namespace Application
         ROOM_INVALID_PERSON_ID = 102,
         ROOM_MISSING_REQUIRED_INFORMATION = 103,
         ROOM_INVALID_EMAIL = 104,
+
+        // Bookings related codes 200 to 499
+        BOOKING_NOT_FOUND = 200,
+        BOOKING_MISSING_REQUIRED_INFORMATION = 201,
+        BOOKING_DATE_INVALID_INFORMATION = 202,
+        BOOKING_COULD_NOT_STORE_DATA = 203,
+        BOOKING_ROOM_CANNOT_BE_BOOKED = 204,
     }
 
     public abstract class Response

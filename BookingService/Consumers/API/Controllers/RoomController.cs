@@ -41,6 +41,10 @@ namespace API.Controllers
             {
                 return BadRequest(res);
             }
+            else if (res.ErrorCode == ErrorCodes.BOOKING_ROOM_CANNOT_BE_BOOKED)
+            {
+                return BadRequest();
+            }
 
             _logger.LogError("Response with unknown ErrorCode Returned", res);
             return BadRequest(500);

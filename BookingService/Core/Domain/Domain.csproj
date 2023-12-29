@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Booking\Exceptions\" />
-    <Folder Include="Booking\Ports\" />
     <Folder Include="Booking\ValueObjects\" />
     <Folder Include="Room\Enums\" />
   </ItemGroup>

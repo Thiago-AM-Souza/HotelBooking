@@ -30,7 +30,7 @@ namespace API.Controllers
 
             if (res.Success) return Created("", res.Data);
 
-            if (res.ErrorCode == ErrorCodes.NOT_FOUND) 
+            else if (res.ErrorCode == ErrorCodes.NOT_FOUND) 
             {
                 return NotFound(res);
             }
