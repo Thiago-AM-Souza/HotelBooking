@@ -29,6 +29,10 @@ namespace Application
         BOOKING_DATE_INVALID_INFORMATION = 202,
         BOOKING_COULD_NOT_STORE_DATA = 203,
         BOOKING_ROOM_CANNOT_BE_BOOKED = 204,
+
+        //
+        PAYMENT_INVALID_PAYMENT_INTENTION = 500,
+        PAYMENT_PROVIDER_NOT_IMPLEMENTED = 501,
     }
 
     public abstract class Response
