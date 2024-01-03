@@ -17,12 +17,22 @@ using Application.MercadoPago;
 using Application.Payment.Ports;
 using Payments.Application;
 using System.Text.Json.Serialization;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Application.Booking.Commands;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
+    cfg.RegisterServicesFromAssemblyContaining(typeof(CreateBookingCommand));
+});
 
 #region IOC
 
