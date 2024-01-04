@@ -1,27 +1,24 @@
-using Microsoft.EntityFrameworkCore;
-using Data;
-using Application.Guest.Ports;
 using Application;
-using Data.Guest;
-using Domain.Guest.Ports;
-using Application.Room.Ports;
-using Application.Room;
-using Domain.Room.Ports;
-using Data.Room;
 using Application.Booking;
-using Data.Booking;
-using Domain.Booking.Ports;
+using Application.Booking.Commands;
 using Application.Booking.Ports;
-using Application.Payment;
+using Application.Booking.Queries;
+using Application.Guest.Ports;
 using Application.MercadoPago;
 using Application.Payment.Ports;
+using Application.Room;
+using Application.Room.Commands;
+using Application.Room.Ports;
+using Data;
+using Data.Booking;
+using Data.Guest;
+using Data.Room;
+using Domain.Booking.Ports;
+using Domain.Guest.Ports;
+using Domain.Room.Ports;
+using Microsoft.EntityFrameworkCore;
 using Payments.Application;
 using System.Text.Json.Serialization;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Application.Booking.Commands;
-using System.Reflection;
-using Application.Booking.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +31,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
     cfg.RegisterServicesFromAssemblyContaining(typeof(CreateBookingCommand));
     cfg.RegisterServicesFromAssemblyContaining(typeof(GetBookingQuery));
+    cfg.RegisterServicesFromAssemblyContaining(typeof(CreateRoomCommand));
 });
 
 #region IOC
