@@ -3,6 +3,7 @@
     public interface IBookingRepository
     {
         Task<Entities.Booking> Get(int id);
+        Task<Entities.Booking> GetAgreggate(int id);
         Task<Entities.Booking> CreateBooking(Entities.Booking booking);
     }
 }

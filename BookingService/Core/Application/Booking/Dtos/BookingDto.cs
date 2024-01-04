@@ -31,5 +31,19 @@ namespace Application.Booking.DTO
                 PlacedAt = bookingDto.PlacedAt,
             };
         }
+
+        public static BookingDto MapToDto(Domain.Booking.Entities.Booking booking) 
+        {
+            return new BookingDto
+            {
+                Id = booking.Id,
+                End = booking.End,
+                GuestId = booking.Guest.Id,
+                PlacedAt = booking.PlacedAt,
+                Status = booking.Status,
+                Start = booking.Start,
+                RoomId = booking.Room.Id,
+            };
+        }
     }
 }

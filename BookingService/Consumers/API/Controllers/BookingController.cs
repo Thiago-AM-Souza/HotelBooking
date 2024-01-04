@@ -3,6 +3,8 @@ using Application.Booking.Commands;
 using Application.Booking.DTO;
 using Application.Booking.Dtos;
 using Application.Booking.Ports;
+using Application.Booking.Queries;
+using Application.Booking.Responses;
 using Application.Payment.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +19,7 @@ namespace API.Controllers
         private readonly ILogger<BookingController> _logger;
         private readonly IMediator _mediator;
 
-        public BookingController(IBookingManager bookingManager, 
+        public BookingController(IBookingManager bookingManager,
                                  ILogger<BookingController> logger,
                                  IMediator mediator)
         {
@@ -64,6 +66,19 @@ namespace API.Controllers
             {
                 return BadRequest(res);
             }
+
+            _logger.LogError("Response with unknown ErrorCode returned", res);
+            return BadRequest(500);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<BookingResponse>> Get(int id)
+        {
+            var query = new GetBookingQuery { Id = id };
+
+            var res = await _mediator.Send(query);
+
+            if (res.Success) return Created("", res.Data);
 
             _logger.LogError("Response with unknown ErrorCode returned", res);
             return BadRequest(500);

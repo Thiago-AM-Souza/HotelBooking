@@ -21,6 +21,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Application.Booking.Commands;
 using System.Reflection;
+using Application.Booking.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,7 @@ builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
     cfg.RegisterServicesFromAssemblyContaining(typeof(CreateBookingCommand));
+    cfg.RegisterServicesFromAssemblyContaining(typeof(GetBookingQuery));
 });
 
 #region IOC
