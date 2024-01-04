@@ -15,17 +15,14 @@ namespace Application.Booking.Commands
         private readonly IBookingRepository _bookingRepository;
         private readonly IGuestRepository _guestRepository;
         private readonly IRoomRepository _roomRepository;
-        private readonly IPaymentProcessorFactory _paymentProcessorFactory;
 
         public CreateBookingCommandHandler(IBookingRepository bookingRepository,
                                             IGuestRepository guestRepository,
-                                            IRoomRepository roomRepository,
-                                            IPaymentProcessorFactory paymentProcessorFactory)
+                                            IRoomRepository roomRepository)
         {
             _bookingRepository = bookingRepository;
             _guestRepository = guestRepository;
             _roomRepository = roomRepository;
-            _paymentProcessorFactory = paymentProcessorFactory;
         }
 
         public async Task<BookingResponse> Handle(CreateBookingCommand request, CancellationToken cancellationToken)
