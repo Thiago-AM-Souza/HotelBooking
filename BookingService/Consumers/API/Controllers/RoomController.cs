@@ -1,8 +1,7 @@
 ﻿using Application;
 using Application.Room.Commands;
 using Application.Room.Dtos;
-using Application.Room.Ports;
-using Application.Room.Request;
+using Application.Room.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,6 +49,21 @@ namespace API.Controllers
 
             _logger.LogError("Response with unknown ErrorCode Returned", res);
             return BadRequest(500);
-        }        
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<RoomDto>> Get(int roomId)
+        {
+            var query = new GetRoomQuery
+            {
+                Id = roomId,
+            };
+
+            var res = await _mediator.Send(query);
+
+            if (res.Success) return Ok(res.Data);
+
+            return NotFound(res);
+        }
     }
 }

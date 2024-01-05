@@ -9,6 +9,7 @@ using Application.Payment.Ports;
 using Application.Room;
 using Application.Room.Commands;
 using Application.Room.Ports;
+using Application.Room.Queries;
 using Data;
 using Data.Booking;
 using Data.Guest;
@@ -32,6 +33,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining(typeof(CreateBookingCommand));
     cfg.RegisterServicesFromAssemblyContaining(typeof(GetBookingQuery));
     cfg.RegisterServicesFromAssemblyContaining(typeof(CreateRoomCommand));
+    cfg.RegisterServicesFromAssemblyContaining(typeof(GetRoomQuery));
 });
 
 #region IOC
